@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, TVApplicationControllerDe
     var appController: TVApplicationController?
 
     // Uncomment the following line to debug
-    // static let TVBaseURL = "http://localhost/appletv/jwplayer-appletv-web-app"
-    static let TVBaseURL = "https://s3.amazonaws.com/appletv.digitaltrends.com"
+    static let TVBaseURL = "http://dev.www.digitaltrends.com/dtdesign/jwplayer-appletv-web-app"
+    //static let TVBaseURL = "https://s3.amazonaws.com/appletv.digitaltrends.com"
     static let TVConfigURL = "\(AppDelegate.TVBaseURL)/resources/configs"
     static let TVBootURL = "\(AppDelegate.TVBaseURL)/js/application.js"
 

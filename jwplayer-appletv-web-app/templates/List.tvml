@@ -1,6 +1,6 @@
 <shelf class="playlist-shelf" id="playlist-${this.feedid}" data-playlist-id="${this.feedid}">
   <header>
-    <title class="playlist-title">${he.encode(this.title)}</title>
+    <title class="playlist-title">${he.strip(this.title)}</title>
   </header>
   <section></section>
 </shelf>

@@ -11,9 +11,6 @@
       .shelfLayout {
         padding: 20 90 50;
       }
-      .darkBackgroundColor {
-        background-color: #212c4b;
-      }
       .playBtn {
         padding: 5px 20px;
       }
@@ -25,12 +22,12 @@
         width: 360px;
         height: 202px;
       }
-
     </style>
   </head>
-  <productTemplate class="darkBackgroundColor" theme="dark">
+  <productTemplate theme="dark">
 
     <banner>
+      <heroImg src="${CONFIG.configURL}/images/black.jpg" style="width:1px; height:1px" />
       <heroImg src="${this.item.artworkImageURL}" style="width:640px" />
       <stack style="width:720px; margin:100px 100px 0px 200px">
         <!--
@@ -38,18 +35,18 @@
           This addresses the Apple TV aversion to rendering CDATA blocks, without
           which the built-in DOM parser barfs on those characters.
         -->
-        <title>${he.encode(this.item.title)}</title>
-        <description allowsZooming="true">${he.encode(this.item.description)}</description>
+        <title>${he.strip(this.item.title)}</title>
+        <description allowsZooming="true">${he.strip(this.item.description)}</description>
         <row>
           <buttonLockup class="playBtn" id="play-button">
-            <text>Play Video</text>
+            <text style="tv-text-style: none; font-size:30">Play</text>
           </buttonLockup>
         </row>
       </stack>
     </banner>
-    <shelf id="related-section">
+    <shelf class="darkBackgroundColor" id="related-section" style="background-color:rgb(0,0,0)">
       <header>
-        <title class="playlist-title">${he.encode(this.related.title)}</title>
+        <title class="playlist-title">${he.strip(this.related.title)}</title>
       </header>
       <section id="related-items"></section>
     </shelf>

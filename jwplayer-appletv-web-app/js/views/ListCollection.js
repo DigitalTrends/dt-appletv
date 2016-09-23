@@ -22,6 +22,7 @@ ViewManager.registerView("ListCollection", function(doc) {
 
   var playlists = collectionDoc.firstChild.getAttribute("data-playlists").split(",");
   var featured = collectionDoc.firstChild.getAttribute("data-featured");
+
   if (featured === "undefined") featured = undefined;
 
   var collectionList = collectionDoc.getElementsByTagName("collectionList").item(0);
@@ -75,7 +76,7 @@ ViewManager.registerView("ListCollection", function(doc) {
       template,
       placeholder = this;
 
-    if (list.feedid == featured) {
+    if (list.feedid == "featured") {
       section = document.getElementById("featured-playlist");
       template = templates.featured;
 

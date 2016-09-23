@@ -19,11 +19,15 @@ var PlaylistLoader = function() {
      * Loads a playlist from the platform.
      */
     this.load = function(playlistId, callback) {
-      var url = `https://content.jwplatform.com/feeds/${playlistId}.json`
+      console.log( "READING: " + playlistId );
+      var url = playlistId;
       var xhr = new XMLHttpRequest();
-      xhr.responseType = "json";
+      xhr.responseType = "text";
       xhr.addEventListener("load", function(xhr) {
-        _playlistLoaded(playlistId, xhr.target.response, callback);
+        var raw_json = xhr.target.response;
+
+        console.log(xhr.target.response);
+        _playlistLoaded(playlistId, JSON.parse( raw_json ), callback);
       }, false);
       xhr.addEventListener("error", function(e) {
         _playlistLoadError(playlistId, e);
@@ -34,14 +38,17 @@ var PlaylistLoader = function() {
     }
 
     function _playlistLoaded(playlistId, playlist, callback) {
+
       // At minimum we need playlist.playlist to be defined.
-      if (!playlist.playlist || !playlist.playlist instanceof Array) {
+      if (!playlist.items || !playlist.items instanceof Array) {
         console.warn('Unable to parse playlist ' + playlistId + '.');
         return;
       }
 
+      playlist.feedid = playlist.id;
+
       // Parse MediaItems out of the playlist
-      playlist.items = _parseMediaItems(playlist.playlist, playlist.feedid);
+      playlist.items = _parseMediaItems(playlist.items, playlist.feedid);
 
       // Iff we managed to parse media items out of the playlist
       // register the playlist and execute the callback.
@@ -86,24 +93,18 @@ var PlaylistLoader = function() {
 
       playlist.forEach(function(playlistItem) {
         var mediaItem = new MediaItem();
-        mediaItem.mediaid = playlistItem.mediaid;
+        mediaItem.mediaid = playlistItem.content_id;
         mediaItem.description = playlistItem.description;
         mediaItem.title = playlistItem.title;
-        mediaItem.artworkImageURL = _checkScheme(playlistItem.image);
+        mediaItem.artworkImageURL = _checkScheme(playlistItem.large_thumb);
         // Set the feed id in the MediaItem so it can be retraced to the global playlist.
         mediaItem.feedid = feedid;
 
         // Figure out the url of the stream for this playlist item.
         var foundStream = false;
-        if (playlistItem.sources && playlistItem.sources instanceof Array) {
-          foundStream = playlistItem.sources.some(function(source) {
-            if (source.type && source.type === 'application/vnd.apple.mpegurl'
-                || source.type === 'application/x-mpegURL') {
-                  mediaItem.url = _checkScheme(source.file);
-                  return true;
-                }
-            return false;
-          });
+        if (playlistItem.stream_url) {
+          foundStream = true;
+          mediaItem.url = _checkScheme( playlistItem.stream_url );
         }
 
         if (foundStream) {

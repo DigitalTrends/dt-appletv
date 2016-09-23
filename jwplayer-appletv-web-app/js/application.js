@@ -93,7 +93,7 @@ function resetApp() {
 function showAlert(alertTitle, alertText) {
   var alertTVML = `<?xml version="1.0" encoding="UTF-8" ?>
 <document>
-  <alertTemplate>
+  <alertTemplate theme="dark">
     <title>${alertTitle}</title>
     <description>${alertText}</description>
   </alertTemplate>

@@ -294,6 +294,10 @@
 		});
 	};
 
+	var strip = function(string) {
+		return encode( string ).replace(/&.*;/g, '');
+	}
+
 	/*--------------------------------------------------------------------------*/
 
 	var he = {
@@ -301,7 +305,8 @@
 		'encode': encode,
 		'decode': decode,
 		'escape': escape,
-		'unescape': decode
+		'unescape': decode,
+		'strip': strip
 	};
 
 	// Some AMD build optimizers, like r.js, check for specific condition patterns
