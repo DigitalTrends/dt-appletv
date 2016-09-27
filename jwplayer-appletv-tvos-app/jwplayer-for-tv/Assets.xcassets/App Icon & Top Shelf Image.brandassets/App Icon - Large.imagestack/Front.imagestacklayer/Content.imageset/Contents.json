@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "tv",
-      "filename" : "app-icon-large-front.png",
+      "filename" : "icon-fg.png",
       "scale" : "1x"
     }
   ],
