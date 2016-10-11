@@ -1,16 +1,16 @@
 {
   "playlists": [
-    "http://www.digitaltrends.com/api/get_videos/?id=auto:recommended",
-    "http://www.digitaltrends.com/api/get_videos/?id=taxonomy:video_show:dt-daily-videos",
-    "http://www.digitaltrends.com/api/get_videos/?id=taxonomy:video_show:between-the-streams",
-    "http://www.digitaltrends.com/api/get_videos/?id=taxonomy:video_show:trends-with-benefits",
-    "http://www.digitaltrends.com/api/get_videos/?id=taxonomy:video_show:close-to-the-metal",
-    "http://www.digitaltrends.com/api/get_videos/?id=taxonomy:video_show:dot-life",
-    "http://www.digitaltrends.com/api/get_videos/?id=taxonomy:video_show:got-it-made",
-    "http://www.digitaltrends.com/api/get_videos/?id=taxonomy:video_show:innovators-and-essentials",
-    "http://www.digitaltrends.com/api/get_videos/?id=taxonomy:video_show:pro-test"
+    "http://www.digitaltrends.com/wp-json/dt-api/videos/?id=auto:recommended",
+    "http://www.digitaltrends.com/wp-json/dt-api/videos/?id=taxonomy:video_show:dt-daily-videos",
+    "http://www.digitaltrends.com/wp-json/dt-api/videos/?id=taxonomy:video_show:between-the-streams",
+    "http://www.digitaltrends.com/wp-json/dt-api/videos/?id=taxonomy:video_show:trends-with-benefits",
+    "http://www.digitaltrends.com/wp-json/dt-api/videos/?id=taxonomy:video_show:close-to-the-metal",
+    "http://www.digitaltrends.com/wp-json/dt-api/videos/?id=taxonomy:video_show:dot-life",
+    "http://www.digitaltrends.com/wp-json/dt-api/videos/?id=taxonomy:video_show:got-it-made",
+    "http://www.digitaltrends.com/wp-json/dt-api/videos/?id=taxonomy:video_show:innovators-and-essentials",
+    "http://www.digitaltrends.com/wp-json/dt-api/videos/?id=taxonomy:video_show:pro-test"
   ],
-  "featuredPlaylist": "http://www.digitaltrends.com/api/get_videos/?id=auto:featured",
+  "featuredPlaylist": "http://www.digitaltrends.com/wp-json/dt-api/videos/?id=auto:featured",
   "splashScreen": "images/splash.png",
   "bannerImage": "images/header.png",
   "backgroundColor": "#000000",
